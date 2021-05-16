@@ -1,0 +1,35 @@
+#APP SPECIFIC CUSTOM PROPERTIES
+app:
+  kafka:
+    producer:
+      topic: <PRODUCER_TOPIC_NAME>
+    consumer:
+      topic: <CONSUMER_TOPIC_NAME_1, CONSUMER_TOPIC_NAME_2, CONSUMER_TOPIC_NAME_3>
+#SPRING PROPERTIES
+spring:
+  profiles:
+    active: local
+  kafka:
+    bootstrap-servers: <host1>:<port1>,<host2>:<port2>,<host3>:<port3>
+    properties:
+      #Server host name verification is disabled by setting ssl.endpoint.identification.algorithm to an empty string
+      ssl.endpoint.identification.algorithm:
+    ssl:
+      protocol: SSL
+      trust-store-location: /app/store/truststore.jks
+      trust-store-password: <TURST_STORE_PASSWORD>
+      key-store-location: /app/store/keystore.jks
+      key-store-password: <KEY_STORE_PASSWORD>
+      key-password: <KEY_PASSWORD>
+    producer:
+      bootstrap-servers:
+      retries: 0
+      acks: all
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      bootstrap-servers: localhost:9200,localhost:9300,localhost:9400
+      group-id: <CONSUMER_GROUP_ID>
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer

@@ -1,0 +1,55 @@
+#APP SPECIFIC CUSTOM PROPERTIES
+api:
+  info:
+    title: Spring Boot APIs
+    description: Spring Boot API Examples
+    version: 1.0.0
+    terms-of-service: http://example.com/terms/
+    contact:
+      name: Example API Team
+      email: apiteam@example.com
+      url: http://example.com/team
+    license:
+      name: Apache 2.0
+      url: http://www.apache.org/licenses/LICENSE-2.0.html
+  logging:
+    enable: true
+    url-patterns: "/users/*,/posts/*"
+    requestIdParamName: CORRELATION_ID
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /   # Redirect localhost:8080 to swagger-ui.html
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.example.api.client: DEBUG
+  pattern:
+    #console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%8.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %X{REQUEST_ID} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: BASIC
+      postFeignClient:
+        loggerLevel: FULL
+
+spring:
+  jackson:  
+    date-format: "dd-MM-yyyy hh:mm:ss"
+    serialization:
+      INDENT_OUTPUT: true
+      FAIL_ON_EMPTY_BEANS: false
+      WRITE_DATES_AS_TIMESTAMPS: false
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+      FAIL_ON_IGNORED_PROPERTIES: false

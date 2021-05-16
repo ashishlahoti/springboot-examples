@@ -1,0 +1,4 @@
+#SPRING PROPERTIES
+spring:
+  profiles:
+    active: local

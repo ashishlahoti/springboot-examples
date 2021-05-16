@@ -1,0 +1,26 @@
+#APP SPECIFIC CUSTOM PROPERTIES
+app:
+  kafka:
+    producer:
+      topic: test
+    consumer:
+      topic: test
+#SPRING PROPERTIES
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      retries: 0
+      acks: all
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: group-1
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+#LOGGING PROPERTIES
+logging:
+  level:
+    root: INFO
