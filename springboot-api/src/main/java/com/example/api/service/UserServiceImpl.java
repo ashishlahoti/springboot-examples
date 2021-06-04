@@ -3,6 +3,7 @@ package com.example.api.service;
 import com.example.api.domain.User;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -14,9 +15,9 @@ public class UserServiceImpl implements UserService {
 
     private Random random = new Random();
     private List<User> userList = new ArrayList<>(
-            List.of(new User(1, "Adam", "1950-01-01"),
-                    new User(2, "Bob", "1990-10-30"),
-                    new User(3, "Charlie", "1979-07-26")));
+            List.of(User.builder().id(1L).name( "Adam").dateOfBirth(LocalDate.of(1950, 1, 1)).build(),
+                    User.builder().id(2L).name( "Bob").dateOfBirth(LocalDate.of(1990, 10, 30)).build(),
+                    User.builder().id(3L).name( "Charlie").dateOfBirth(LocalDate.of(1979, 7, 26)).build()));
 
     @Override
     public List<User> getAllUsers() {

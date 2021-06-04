@@ -22,6 +22,9 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-ui:latest.release'
     implementation 'commons-io:commons-io:2.6'
 
+    compileOnly 'com.fasterxml.jackson.core:jackson-databind:2.9.7'
+    compileOnly 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.7'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner'
 
