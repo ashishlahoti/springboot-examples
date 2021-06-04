@@ -1,9 +1,0 @@
-{
-  "data" : {
-    "userById" : {
-      "id" : "1",
-      "name" : "Adam",
-      "dateOfBirth" : "1950-01-01"
-    }
-  }
-}

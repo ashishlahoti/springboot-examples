@@ -43,6 +43,10 @@ feign:
       postFeignClient:
         loggerLevel: FULL
 
+client:
+  post:
+    baseUrl: https://jsonplaceholder.typicode.com
+
 spring:
   jackson:  
     date-format: "dd-MM-yyyy hh:mm:ss"

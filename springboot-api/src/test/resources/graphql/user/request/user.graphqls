@@ -1,7 +1,0 @@
-query GET_USER_BY_ID {
-    userById(id: "1") {
-        id
-        name
-        dateOfBirth
-    }
-}

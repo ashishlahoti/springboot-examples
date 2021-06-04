@@ -25,6 +25,13 @@ public class ApiExceptionHandler {
         return buildResponseEntity(apiError);
     }
 
+    @ExceptionHandler(FeignException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<ApiError> onFeignException(FeignException ex) {
+        ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error", ex);
+        return buildResponseEntity(apiError);
+    }
+
     private ResponseEntity<ApiError> buildResponseEntity(ApiError apiError) {
         return ResponseEntity
                 .status(apiError.getStatus())

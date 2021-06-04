@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @FeignClient(name = "postFeignClient",
-        url = "https://jsonplaceholder.typicode.com",
+        url = "${client.post.baseUrl}",
         configuration = FeignClientConfig.class,
         fallback = PostFeignClientFallback.class)
 public interface PostFeignClient {
