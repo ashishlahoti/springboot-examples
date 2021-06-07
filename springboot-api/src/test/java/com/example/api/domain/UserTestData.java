@@ -9,7 +9,7 @@ public class UserTestData {
         return User.builder()
                 .id(1L)
                 .name( "Adam")
-                .dateOfBirth(LocalDate.of(1950, 1, 1))
+                .dateOfBirth(LocalDate.of(1986, 8, 22))
                 .build();
     }
 

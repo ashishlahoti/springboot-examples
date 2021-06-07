@@ -9,6 +9,13 @@ app:
 spring:
   kafka:
     bootstrap-servers: localhost:9092
+    ssl:
+      protocol: SSL
+      trust-store-location: classpath:/app/store/truststore.jks
+      trust-store-password: password
+      key-store-location: classpath:/app/store/keystore.jks
+      key-store-password: password
+      key-password: password
     producer:
       retries: 0
       acks: all

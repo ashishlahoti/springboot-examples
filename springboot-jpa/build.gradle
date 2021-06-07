@@ -18,15 +18,19 @@ ext {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    implementation 'org.springdoc:springdoc-openapi-ui:latest.release'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'commons-io:commons-io:2.6'
+    implementation 'org.mapstruct:mapstruct-jdk8:1.3.0.Final'
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+    implementation 'io.springfox:springfox-data-rest:2.9.2'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner'
 
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    runtimeOnly 'com.h2database:h2'
 }
 
 dependencyManagement {

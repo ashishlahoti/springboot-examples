@@ -1,0 +1,97 @@
+# INFO endpoint http://localhost:8080/actuator/info
+info:
+  app:
+    name: spring boot microservice
+    version: 1.0.0_RELEASE
+    description: more details about sprint boot microservice
+    contact-support: apisupportgroup@abc.com
+  copyright: copyright (c) abc.com
+  license: MIT
+  tech-used:
+    - name: java
+      version: 11.x
+    - name: spring-boot
+      version: 2.x
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,release-notes
+
+# APP SPECIFIC CUSTOM PROPERTIES
+app:
+  name: spring boot application
+  api:
+    title: Spring Boot APIs
+    version: 1.0.0
+    description: Spring Boot APIs description
+    base-package: com.abc.controller
+    contact-name: apisupportgroup
+    contact-email: apisupportgroup@abc.com
+    logging:
+      enable: true
+      url-patterns: /users/*,/posts/*
+      requestIdParamName: reqId
+
+# SERVER PROPERTIES
+server:
+  port: 8080
+logging:
+  level:
+    root: INFO
+    com.abc.demo: DEBUG
+  pattern:
+    #console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%8.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %X{REQUEST_ID} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+
+# SPRING PROPERTIES
+spring:
+  banner:
+    location: classpath:banner.txt
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+      FAIL_ON_EMPTY_BEANS: false
+
+# CONFIG PROPERTIES
+person:
+  name: Ashish Kumar Lahoti
+  occupation: blogger
+  age: 34
+  gpa: 3.5
+  fav_num: 1e+10
+  male: true
+  birthday: 1986-08-22
+  flaws: null
+  hobbies:
+    - bike riding
+    - watching movies
+    - online games
+    - cooking
+  movies: ["Dark Knight", "Spider Man", "Thor"]
+  assets: {Car: 1, Bike: 2, Home: 1}
+  size:
+    t-shirt:
+      us: XL
+      uk: L
+    shoes:
+      us: 8.5
+      uk: 6.5 
+  friends:
+    - name: "adam"
+      age: 28
+    - {name: "ben", age: 26}
+    -
+      name: "charlie"
+      age: 40
+  description: >
+    Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit, sed
+    do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua
+  signature: |
+    Thanks & Regards,
+    Ashish Kumar Lahoti
+    email - lahoti.ashish20@gmail.com
+  
+

@@ -1,4 +1,4 @@
-package com.abc.dao.entity;
+package com.example.jpa.dao.entity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,6 +27,6 @@ public class User {
 	private Integer age;
 	
 	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-   	private Set<UserGroup> userGroups = new HashSet<UserGroup>();
+   	private Set<UserGroup> userGroups = new HashSet<>();
 	
 }

@@ -1,4 +1,4 @@
-package com.abc.model.request;
+package com.example.jpa.model.request;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.abc.config;
+package com.example.jpa.config;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package com.abc.dao.entity;
+package com.example.jpa.dao.entity;
 
 import java.util.HashSet;
 import java.util.Set;

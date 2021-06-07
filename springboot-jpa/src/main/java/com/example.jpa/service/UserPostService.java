@@ -1,10 +1,10 @@
-package com.abc.service;
+package com.example.jpa.service;
+
+import com.example.jpa.dao.entity.Post;
 
 import java.util.List;
 
-import com.abc.dao.entity.Post;
-
 public interface UserPostService {
 
-	public List<Post> getAllPostsByUserId(Long userId);
+    List<Post> getAllPostsByUserId(Long userId);
 }

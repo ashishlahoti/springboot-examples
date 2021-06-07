@@ -1,19 +1,22 @@
-package com.abc.service;
+package com.example.jpa.service;
 
-import java.util.Optional;
-
+import com.example.jpa.dao.entity.User;
+import com.example.jpa.model.query.UserQueryModel;
+import com.example.jpa.model.request.UserRequestModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.abc.dao.entity.User;
-import com.abc.model.query.UserQueryModel;
-import com.abc.model.request.UserRequestModel;
+import java.util.Optional;
 
 public interface UserService {
 
-	public Page<User> getAllUsers(UserQueryModel userQueryModel, Pageable pageable);
-	public Optional<User> getUserById(Long id);
-	public User createUser(UserRequestModel userRequestModel);
-	public User updateUser(Long id, UserRequestModel userRequestModel);
-	public void deleteUserById(Long id);
+    Page<User> getAllUsers(UserQueryModel userQueryModel, Pageable pageable);
+
+    Optional<User> getUserById(Long id);
+
+    User createUser(UserRequestModel userRequestModel);
+
+    User updateUser(Long id, UserRequestModel userRequestModel);
+
+    void deleteUserById(Long id);
 }

@@ -1,8 +1,8 @@
-package com.abc.service;
+package com.example.jpa.service;
 
 public interface CryptoService {
 
-	public String encrypt(String password);
-	
-	public String decrypt(String password);
+    String encrypt(String password);
+
+    String decrypt(String password);
 }

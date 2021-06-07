@@ -46,21 +46,4 @@ public class User {
 	@JsonSerialize(using = ZonedDateTimeSerializer.class)
 	ZonedDateTime zonedDateTime;
 
-	@JsonCreator
-	public static User of(
-			@JsonProperty("id") Long id,
-			@JsonProperty("name") String name,
-			@JsonProperty("dateOfBirth") LocalDate dateOfBirth,
-			@JsonProperty("lastLogin") LocalDateTime lastLogin,
-			@JsonProperty("zonedDateTime") ZonedDateTime zonedDateTime
-	) {
-		return User.builder()
-				.id(id)
-				.name(name)
-				.dateOfBirth(dateOfBirth)
-				.lastLogin(lastLogin)
-				.zonedDateTime(zonedDateTime)
-				.build();
-	}
-
 }

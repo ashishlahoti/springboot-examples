@@ -1,13 +1,12 @@
-package com.abc.model.mapper;
+package com.example.jpa.model.mapper;
 
+import com.example.jpa.dao.entity.User;
+import com.example.jpa.model.request.UserRequestModel;
 import org.mapstruct.Mapper;
 
-import com.abc.dao.entity.User;
-import com.abc.model.request.UserRequestModel;
-
-@Mapper(componentModel="spring")
+@Mapper(componentModel = "spring")
 public interface UserModelMapper {
 
-	public User toUserEntity(UserRequestModel userRequestModel);
-	
+    User toUserEntity(UserRequestModel userRequestModel);
+
 }

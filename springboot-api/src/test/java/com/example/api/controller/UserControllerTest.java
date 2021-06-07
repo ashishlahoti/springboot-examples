@@ -40,7 +40,7 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$", hasSize(UserTestData.users().size())))
                 .andExpect(jsonPath("$[0].id", equalTo(1)))
                 .andExpect(jsonPath("$[0].name", equalTo("Adam")))
-                .andExpect(jsonPath("$[0].dateOfBirth", equalTo("01 Jan 1950")));
+                .andExpect(jsonPath("$[0].dateOfBirth", equalTo("22 Aug 1986")));
     }
 
     @Test
@@ -61,7 +61,7 @@ public class UserControllerTest {
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$.id", equalTo(1)))
                 .andExpect(jsonPath("$.name", equalTo("Adam")))
-                .andExpect(jsonPath("$.dateOfBirth", equalTo("01 Jan 1950")));
+                .andExpect(jsonPath("$.dateOfBirth", equalTo("22 Aug 1986")));
     }
 
     @Test

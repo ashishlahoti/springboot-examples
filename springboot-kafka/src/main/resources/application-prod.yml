@@ -16,9 +16,9 @@ spring:
       ssl.endpoint.identification.algorithm:
     ssl:
       protocol: SSL
-      trust-store-location: /app/store/truststore.jks
+      trust-store-location: file:/app/store/truststore.jks
       trust-store-password: <TURST_STORE_PASSWORD>
-      key-store-location: /app/store/keystore.jks
+      key-store-location: file:/app/store/keystore.jks
       key-store-password: <KEY_STORE_PASSWORD>
       key-password: <KEY_PASSWORD>
     producer:
