@@ -17,6 +17,8 @@ api:
     url-patterns: "/users/*,/posts/*"
     requestIdParamName: CORRELATION_ID
 
+
+
 springdoc:
   swagger-ui:
     enabled: true

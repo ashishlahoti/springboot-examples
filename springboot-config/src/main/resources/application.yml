@@ -1,15 +1,20 @@
 # INFO endpoint http://localhost:8080/actuator/info
 info:
   app:
-    name: spring boot microservice
-    version: 1.0.0_RELEASE
+    title: spring boot microservice
     description: more details about sprint boot microservice
-    contact-support: apisupportgroup@abc.com
+    version: 1.0.0_RELEASE
+    base-package: com.example.demo
+    contact-name: API Support Group
+    contact-email: apisupportgroup@abc.com
+    contact-url: http://example.com/team
+    terms-of-service: http://example.com/terms/
+    license-name: Apache 2.0
+    license-url: http://www.apache.org/licenses/LICENSE-2.0.html
   copyright: copyright (c) abc.com
-  license: MIT
   tech-used:
     - name: java
-      version: 11.x
+      version: ${java.version}
     - name: spring-boot
       version: 2.x
 management:
@@ -18,20 +23,8 @@ management:
       exposure:
         include: info,health,release-notes
 
-# APP SPECIFIC CUSTOM PROPERTIES
-app:
-  name: spring boot application
-  api:
-    title: Spring Boot APIs
-    version: 1.0.0
-    description: Spring Boot APIs description
-    base-package: com.abc.controller
-    contact-name: apisupportgroup
-    contact-email: apisupportgroup@abc.com
-    logging:
-      enable: true
-      url-patterns: /users/*,/posts/*
-      requestIdParamName: reqId
+custom.condition.enabled: false
+another-custom.condition.enabled: false
 
 # SERVER PROPERTIES
 server:
@@ -39,7 +32,7 @@ server:
 logging:
   level:
     root: INFO
-    com.abc.demo: DEBUG
+    com.example.demo: DEBUG
   pattern:
     #console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
     console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%8.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %X{REQUEST_ID} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
