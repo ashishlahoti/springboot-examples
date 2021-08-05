@@ -50,8 +50,9 @@ client:
     baseUrl: https://jsonplaceholder.typicode.com
 
 spring:
-  jackson:  
+  jackson:
     date-format: "dd-MM-yyyy hh:mm:ss"
+    default-property-inclusion: use_defaults
     serialization:
       INDENT_OUTPUT: true
       FAIL_ON_EMPTY_BEANS: false

@@ -1,8 +1,7 @@
 package com.example.api.domain;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
@@ -18,13 +17,16 @@ import java.time.ZonedDateTime;
 @Builder
 @Getter
 @Setter
+@JsonInclude(JsonInclude.Include.USE_DEFAULTS)
 public class User {
 
-	User(){}
+	User() {
+	}
 
-	User(Long id, String name, LocalDate dateOfBirth, LocalDateTime lastLogin, ZonedDateTime zonedDateTime){
+	User(Long id, String name, String password, LocalDate dateOfBirth, LocalDateTime lastLogin, ZonedDateTime zonedDateTime) {
 		this.id = id;
 		this.name = name;
+		this.password = password;
 		this.dateOfBirth = dateOfBirth;
 		this.lastLogin = lastLogin;
 		this.zonedDateTime = zonedDateTime;
@@ -33,15 +35,18 @@ public class User {
 	Long id;
 
 	String name;
-	
-	@JsonFormat(pattern="dd MMM yyyy")
+
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	String password;
+
+	@JsonFormat(pattern = "dd MMM yyyy")
 	@JsonSerialize(using = LocalDateSerializer.class)
 	LocalDate dateOfBirth;
 
-	@JsonFormat(pattern="dd MMM yyyy hh:mm:ss")
+	@JsonFormat(pattern = "dd MMM yyyy hh:mm:ss")
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
 	LocalDateTime lastLogin;
-	
+
 	@JsonFormat(pattern = "yyyy-MM-dd@HH:mm:ss.SSSXXX", locale = "en_SG", timezone = "Asia/Singapore")
 	@JsonSerialize(using = ZonedDateTimeSerializer.class)
 	ZonedDateTime zonedDateTime;

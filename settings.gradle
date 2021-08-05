@@ -4,4 +4,3 @@ include 'springboot-api'
 include 'springboot-config'
 include 'springboot-jpa'
 include 'springboot-kafka'
-

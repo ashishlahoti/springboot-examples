@@ -21,7 +21,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: info,health,release-notes
+        include: info,health,release-notes,custom-endpoint
 
 custom.condition.enabled: false
 another-custom.condition.enabled: false
@@ -29,6 +29,51 @@ another-custom.condition.enabled: false
 # SERVER PROPERTIES
 server:
   port: 8080
+  jetty:
+    connection-idle-timeout:
+    max-http-form-post-size:
+    accesslog:
+      append: true
+      enabled: true
+      custom-format:
+      file-date-format:
+      filename:
+      format:
+      ignore-paths:
+      retention-period: 31
+    threads:
+      acceptors:
+      idle-timeout:
+      max:
+      max-queue-capacity:
+      min:
+      selectors:
+  undertow:
+    allow-encoded-slash: false # Whether the server should decode percent encoded slash characters. Enabling encoded slashes can have security implications due to different servers interpreting the slash differently. Only enable this if you have a legacy application that requires it.
+    always-set-keep-alive: true # Whether the 'Connection: keep-alive' header should be added to all responses, even if not required by the HTTP specification.
+    buffer-size: # Size of each buffer. The default is derived from the maximum amount of memory that is available to the JVM.
+    decode-url: true # Whether the URL should be decoded. When disabled, percent-encoded characters in the URL will be left as-is.
+    direct-buffers: # Whether to allocate buffers outside the Java heap. The default is derived from the maximum amount of memory that is available to the JVM.
+    eager-filter-init: true # Whether servlet filters should be initialized on startup.
+    max-cookies: 200 # Maximum number of cookies that are allowed. This limit exists to prevent hash collision based DOS attacks.
+    max-headers: 12 # Maximum number of headers that are allowed. This limit exists to prevent hash collision based DOS attacks.
+    max-parameters: # Maximum number of query or path parameters that are allowed. This limit exists to prevent hash collision based DOS attacks.
+    max-http-post-size: -1B # Maximum size of the HTTP post content. When the value is -1, the default, the size is unlimited.
+    no-request-timeout: # Amount of time a connection can sit idle without processing a request, before it is closed by the server.
+    preserve-path-on-forward: false # Whether to preserve the path of a request when it is forwarded.
+    url-charset: UTF-8 # Charset used to decode URLs
+    accesslog:
+      enabled: false # Whether to enable the access log
+      dir: # Undertow access log directory
+      pattern: common # Format pattern for access logs
+      rotate: true # Whether to enable access log rotation
+      prefix: access_log. # Log file name prefix.
+      suffix: log # Log file name suffix
+    threads:
+      io: # Number of I/O threads to create for the worker. The default is derived from the number of available processors.
+      worker: # Number of worker threads. The default is 8 times the number of I/O threads.
+
+# LOGGING PROPERTIES
 logging:
   level:
     root: INFO
@@ -36,6 +81,9 @@ logging:
   pattern:
     #console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
     console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%8.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %X{REQUEST_ID} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+
+# OPENFEIGN PROPERTIES
+feign.httpclient.enabled: true
 
 # SPRING PROPERTIES
 spring:
@@ -46,7 +94,7 @@ spring:
       INDENT_OUTPUT: true
       FAIL_ON_EMPTY_BEANS: false
 
-# CONFIG PROPERTIES
+# PERSON CONFIG PROPERTIES
 person:
   name: Ashish Kumar Lahoti
   occupation: blogger
