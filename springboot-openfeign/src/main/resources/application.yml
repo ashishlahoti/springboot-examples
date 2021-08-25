@@ -1,0 +1,34 @@
+#APP SPECIFIC CUSTOM PROPERTIES
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.example.api.client: DEBUG
+  pattern:
+    #console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%8.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %X{REQUEST_ID} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: BASIC
+      postFeignClient:
+        loggerLevel: FULL
+
+client:
+  api:
+    baseUrl: https://reqres.in
+    ssl:
+      protocol: TLS
+      key-store-type: JKS
+      key-store: classpath:KeyStore.jks
+      key-store-password: changeit
+      key-password: changeit
+      trust-store: classpath:TrustStore.jks
+      trust-store-password: changeit
