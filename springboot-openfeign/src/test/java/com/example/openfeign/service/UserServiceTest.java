@@ -28,7 +28,8 @@ public class UserServiceTest {
         User user = userService.getUserById(1L);
 
         assertThat(user.getId()).isEqualTo(1);
-        assertThat(user.getFirstName()).isEqualTo("Adam");
+        assertThat(user.getFirstName()).isEqualTo("George");
+        assertThat(user.getLastName()).isEqualTo("Bluth");
     }
 
 }

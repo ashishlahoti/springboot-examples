@@ -1,7 +1,7 @@
 package com.example.openfeign.client;
 
-import com.example.openfeign.model.User;
 import com.example.openfeign.model.SingleUserResponse;
+import com.example.openfeign.model.User;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +18,20 @@ import java.nio.charset.StandardCharsets;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ActiveProfiles("test")
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureWireMock(port = 9091)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+    properties = {
+        "client.api.baseUrl=http://localhost:" + UserFeignClientTest.port
+    })
+@AutoConfigureWireMock(port = UserFeignClientTest.port)
 public class UserFeignClientTest {
 
     @Autowired
     UserFeignClient userFeignClient;
 
+    public static final int port = 9091;
+
     @Test
-    public void getUserByid_whenValidClient_returnValidResponse() throws Exception {
+    public void getUserById_whenValidClient_returnValidResponse() throws Exception {
         // Using WireMock to mock client API:
         stubFor(get(urlEqualTo("/api/users/1"))
             .willReturn(aResponse()
@@ -40,6 +44,8 @@ public class UserFeignClientTest {
 
         // We're asserting if WireMock responded properly
         assertThat(user.getId()).isEqualTo(1);
+        assertThat(user.getFirstName()).isEqualTo("George");
+        assertThat(user.getLastName()).isEqualTo("Bluth");
     }
 
     private String read(String location) throws IOException {

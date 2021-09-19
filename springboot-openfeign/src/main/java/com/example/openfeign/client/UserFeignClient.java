@@ -27,6 +27,4 @@ public interface UserFeignClient {
 
     @DeleteMapping("/api/users/{userId}")
     void deleteUserById(@PathVariable("userId") Long userId);
-
-
 }

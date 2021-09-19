@@ -33,8 +33,8 @@ public class UserControllerTest {
         mockMvc.perform(get("/users/1"))
             .andExpect(status().is2xxSuccessful())
             .andExpect(jsonPath("$.id", equalTo(1)))
-            .andExpect(jsonPath("$.name", equalTo("Adam")))
-            .andExpect(jsonPath("$.dateOfBirth", equalTo("22 Aug 1986")));
+            .andExpect(jsonPath("$.first_name", equalTo("George")))
+            .andExpect(jsonPath("$.last_name", equalTo("Bluth")));
     }
 
 }

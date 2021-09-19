@@ -11,12 +11,15 @@ public class UserTestData {
     public static User user() {
         return User.builder()
             .id(1L)
-            .firstName("Adam")
+            .firstName("George")
+            .lastName("Bluth")
             .build();
     }
 
     public static SingleUserResponse userData() {
-        return new SingleUserResponse();
+        SingleUserResponse singleUserResponse = new SingleUserResponse();
+        singleUserResponse.setUser(user());
+        return singleUserResponse;
     }
 
     public static List<User> users() {
