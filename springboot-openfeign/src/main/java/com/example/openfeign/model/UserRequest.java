@@ -3,6 +3,7 @@ package com.example.openfeign.model;
 import lombok.Data;
 
 @Data
-public class UserData {
-    User data;
+public class UserRequest {
+    String name;
+    String job;
 }

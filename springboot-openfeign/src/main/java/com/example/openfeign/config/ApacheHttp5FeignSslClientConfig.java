@@ -4,6 +4,7 @@ import feign.Feign;
 import feign.Retryer;
 import feign.hc5.ApacheHttp5Client;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
 import org.apache.hc.client5.http.io.HttpClientConnectionManager;
@@ -35,7 +36,10 @@ public class ApacheHttp5FeignSslClientConfig {
         @Value("${client.api.ssl.key-store-password}") String keyStorePassword,
         @Value("${client.api.ssl.key-password}") String keyPassword,
         @Value("${client.api.ssl.trust-store}") String trustStore,
-        @Value("${client.api.ssl.trust-store-password}") String trustStorePassword
+        @Value("${client.api.ssl.trust-store-password}") String trustStorePassword,
+        @Value("${client.api.ssl.proxy-host}") String proxyHost,
+        @Value("${client.api.ssl.proxy-port}") String proxyPort
+
     ) {
         SSLContext sslContext = getSSLContext(protocol, keyStoreType, keyStore, keyStorePassword, keyPassword, trustStore, trustStorePassword);
         SSLConnectionSocketFactory sslConnectionSocketFactory = SSLConnectionSocketFactoryBuilder.create().setSslContext(sslContext).build();
@@ -44,7 +48,7 @@ public class ApacheHttp5FeignSslClientConfig {
             .retryer(Retryer.NEVER_RETRY)
             .client(new ApacheHttp5Client(HttpClients.custom()
                 .setConnectionManager(connectionManager)
-                //.setProxy(new HttpHost("XX.XX.XX.XX" /*proxyhost*/, 443 /*proxyport*/ ))
+                .setProxy(StringUtils.isNotEmpty(proxyHost) ? new HttpHost(proxyHost, proxyPort) : null)
                 .build()));
     }
 

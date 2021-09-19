@@ -19,4 +19,12 @@ public class User {
 
     String avatar;
 
+    String name;
+
+    String job;
+
+    String createdAt;
+
+    String updatedAt;
+
 }

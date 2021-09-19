@@ -1,7 +1,7 @@
 package com.example.openfeign.client;
 
 import com.example.openfeign.model.User;
-import com.example.openfeign.model.UserData;
+import com.example.openfeign.model.SingleUserResponse;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +35,8 @@ public class UserFeignClientTest {
                 .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                 .withBody(read("stubs/user.json"))));
 
-        UserData userData = userFeignClient.getUserById(1L);
-        User user = userData.getData();
+        SingleUserResponse userData = userFeignClient.getUserById(1L);
+        User user = userData.getUser();
 
         // We're asserting if WireMock responded properly
         assertThat(user.getId()).isEqualTo(1);

@@ -1,9 +1,8 @@
 package com.example.openfeign.domain;
 
 import com.example.openfeign.model.User;
-import com.example.openfeign.model.UserData;
+import com.example.openfeign.model.SingleUserResponse;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class UserTestData {
@@ -16,8 +15,8 @@ public class UserTestData {
             .build();
     }
 
-    public static UserData userData() {
-        return new UserData();
+    public static SingleUserResponse userData() {
+        return new SingleUserResponse();
     }
 
     public static List<User> users() {
