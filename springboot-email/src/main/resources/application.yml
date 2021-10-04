@@ -1,0 +1,21 @@
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /   # Redirect localhost:8080 to swagger-ui.html
+
+server:
+  port: 8080
+
+spring:
+  mail:
+    default-encoding: UTF-8
+    host:
+    port:
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enabled: false
+    protocol: smtp
+    test-connection: false
