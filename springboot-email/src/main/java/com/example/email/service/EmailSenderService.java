@@ -33,7 +33,7 @@ public class EmailSenderService {
         String html = templateEngine.process(email.getTemplate(), context);
         helper.setText(html, true);
 
-        log.info("Sending email: {} with body: {}", email, html);
+        log.info("Sending email: {} with html body: {}", email, html);
         emailSender.send(message);
     }
 
@@ -43,6 +43,8 @@ public class EmailSenderService {
         message.setTo(email.getTo());
         message.setSubject(email.getSubject());
         message.setText(email.getText());
+
+        log.info("Sending email: {} with text body: {}", email, email.getText());
         emailSender.send(message);
     }
 }

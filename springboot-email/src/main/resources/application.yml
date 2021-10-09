@@ -9,13 +9,16 @@ server:
 spring:
   mail:
     default-encoding: UTF-8
-    host:
-    port:
+    host: smtp.gmail.com
+    username: gmail_account
+    password: gmail_app_password
+    port: 587
     properties:
       mail:
         smtp:
-          auth: false
+          auth: true
           starttls:
-            enabled: false
+            enable: true
+        debug: true
     protocol: smtp
     test-connection: false

@@ -12,9 +12,13 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    set('springCloudVersion', "2020.0.3")
+}
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springdoc:springdoc-openapi-ui:latest.release'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.thymeleaf:thymeleaf'
     implementation 'org.thymeleaf:thymeleaf-spring5'
@@ -22,6 +26,12 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
 
 test {
