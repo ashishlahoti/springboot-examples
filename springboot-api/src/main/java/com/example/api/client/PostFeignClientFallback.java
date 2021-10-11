@@ -1,10 +1,12 @@
 package com.example.api.client;
 
 import com.example.api.domain.Post;
+import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.List;
 
+@Component
 public class PostFeignClientFallback implements PostFeignClient{
     @Override
     public List<Post> getAllPosts() {
