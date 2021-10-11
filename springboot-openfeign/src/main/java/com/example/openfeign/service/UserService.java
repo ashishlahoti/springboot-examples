@@ -21,6 +21,10 @@ public class UserService {
         return userFeignClient.getUserList(page).getUsers();
     }
 
+    public List<User> getUserListDelayed(Integer page, Integer delay) {
+        return userFeignClient.getUserListDelayed(page, delay).getUsers();
+    }
+
     public User getUserById(Long userId) {
         return userFeignClient.getUserById(userId).getUser();
     }

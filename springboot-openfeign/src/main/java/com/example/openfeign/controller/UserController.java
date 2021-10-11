@@ -16,8 +16,8 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
-    List<User> getUserList(@RequestParam("page") Integer page){
-        return userService.getUserList(page);
+    List<User> getUserListDelayed(@RequestParam("page") Integer page, @RequestParam(name = "delay", defaultValue = "0") Integer delay){
+        return userService.getUserListDelayed(page, delay);
     }
 
     @GetMapping("/{userId}")

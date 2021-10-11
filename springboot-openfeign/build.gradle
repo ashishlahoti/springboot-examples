@@ -19,6 +19,7 @@ ext {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix:2.2.9.RELEASE'
     implementation 'io.github.openfeign:feign-hc5'
     implementation 'io.github.openfeign.form:feign-form:3.8.0'
     implementation 'org.springdoc:springdoc-openapi-ui:latest.release'

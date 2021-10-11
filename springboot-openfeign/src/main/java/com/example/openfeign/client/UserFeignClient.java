@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.*;
 
 @FeignClient(name = "userFeignClient",
     url = "${client.api.baseUrl}",
-    configuration = ApacheHttp5FeignSslClientConfig.class)
+    configuration = ApacheHttp5FeignSslClientConfig.class,
+    fallback = UserFeignClientFallback.class)
 public interface UserFeignClient {
 
     @GetMapping("/api/users")
     ListUserResponse getUserList(@RequestParam("page") Integer page);
+
+    @GetMapping("/api/users")
+    ListUserResponse getUserListDelayed(@RequestParam("page") Integer page, @RequestParam("delay") Integer delay);
 
     @GetMapping("/api/users/{userId}")
     SingleUserResponse getUserById(@PathVariable("userId") Long userId);
