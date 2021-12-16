@@ -1,4 +1,4 @@
-# springboot-api
+# springboot-email
 
 ## Overview
-Email Service to send Simple and Templated Emails using Thymeleaf and Freemarker
+Email Service to compose emails using Thymeleaf HTML template and send them using spring framework's JavaMailSender

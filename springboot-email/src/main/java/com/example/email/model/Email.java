@@ -15,7 +15,7 @@ public class Email {
     String subject;
     @Schema(example = "Thank you for subscribing to our channel.")
     String text;
-    @Schema(example = "email-template-1.html")
+    @Schema(example = "welcome-email.html")
     String template;
     @Schema(example = "{\n" +
         "\"name\": \"Ashish\",\n" +
