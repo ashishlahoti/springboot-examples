@@ -1,0 +1,75 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set('springCloudVersion', "2020.0.3")
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'commons-io:commons-io:2.6'
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.12.3'
+    implementation 'org.jvnet.jaxb2_commons:jaxb2-basics-runtime:0.12.0'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner'
+
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+configurations {
+    jaxb
+}
+
+dependencies {
+    jaxb(
+        'com.sun.xml.bind:jaxb-xjc:2.3.1',
+        'com.sun.xml.bind:jaxb-impl:2.3.1',
+        'org.glassfish.jaxb:jaxb-runtime:2.3.1',
+        'org.jvnet.jaxb2_commons:jaxb2-basics:0.12.0'
+    )
+}
+
+task jaxb {
+    def generatedResouces = "src/main/generated-sources"
+    def jaxbTargetDir = file(generatedResouces)
+    jaxbTargetDir.deleteDir()
+
+    doLast {
+        jaxbTargetDir.mkdirs()
+        ant.taskdef(name: 'xjc', classname: 'com.sun.tools.xjc.XJCTask', classpath: configurations.jaxb.asPath)
+        ant.jaxbTargetDir = jaxbTargetDir
+        ant.xjc(destDir: '${jaxbTargetDir}', package: 'com.example.jaxb', extension: true){
+            schema(dir: "src/main/resources/schema", includes: "schema.xsd")
+            binding(dir: "src/main/resources/jaxb", includes: "bindings.xjb")
+            arg(line: '-XenumValue')
+        }
+    }
+}
+
+sourceSets.main.java.srcDirs += 'src/main/generated-sources'
+
+compileJava.dependsOn jaxb

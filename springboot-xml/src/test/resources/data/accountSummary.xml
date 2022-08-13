@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<accountSummary version = "1.0" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance">
+    <timestamp>2003-01-01T12:25:00</timestamp>
+    <currency>USD</currency>
+    <balance>2703.35</balance>
+    <interest rounding = "half up">27.55</interest>
+</accountSummary>

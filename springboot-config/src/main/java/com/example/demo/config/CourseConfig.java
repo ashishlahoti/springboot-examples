@@ -38,6 +38,12 @@ public class CourseConfig {
     @Value("${course.trending}")
     private boolean isTrending;
 
+    @Value("${course.title} (${course.rating})")
+    private String titleAndRating;
+
+    @Value("${course.title} - ${course.duration} min")
+    private String titleAndDuration;
+
     // Default Value
     @Value("${course.review: No Reviews Yet}")
     private String review;

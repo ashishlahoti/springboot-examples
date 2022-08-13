@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema" elementFormDefault = "qualified">
+    <xs:element name = "accountSummary">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref = "timestamp"/>
+                <xs:element ref = "currency"/>
+                <xs:element ref = "balance"/>
+                <xs:element ref = "interest"/>
+            </xs:sequence>
+            <xs:attribute name = "version" use = "required">
+                <xs:simpleType>
+                    <xs:restriction base = "xs:string">
+                        <xs:pattern value = "[1-9]+[0-9]*\.[0-9]+"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name = "timestamp" type = "xs:dateTime"/>
+
+    <xs:element name = "currency" type = "iso3currency"/>
+
+    <xs:element name = "balance" type = "xs:decimal"/>
+
+    <xs:element name = "interest">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base = "xs:decimal">
+                    <xs:attribute name = "rounding" use = "required"
+                                   type = "roundingDirection"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name = "iso3currency">
+        <xs:annotation>
+            <xs:documentation>ISO-4217 3-letter currency codes,
+                as defined at
+                http://www.bsi-global.com/Technical+Information/Publications/_Publications/tig90.xalter
+                or available from
+                http://www.xe.com/iso4217.htm
+                Only a subset are defined here.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "AUD"/><!-- Australian Dollar -->
+            <xs:enumeration value = "BRL"/><!-- Brazilian Real -->
+            <xs:enumeration value = "CAD"/><!-- Canadian Dollar -->
+            <xs:enumeration value = "CNY"/><!-- Chinese Yen -->
+            <xs:enumeration value = "EUR"/><!-- Euro -->
+            <xs:enumeration value = "GBP"/><!-- British Pound -->
+            <xs:enumeration value = "INR"/><!-- Indian Rupee -->
+            <xs:enumeration value = "JPY"/><!-- Japanese Yen -->
+            <xs:enumeration value = "RUR"/><!-- Russian Rouble -->
+            <xs:enumeration value = "USD"/><!-- US Dollar -->
+            <xs:length value = "3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name = "roundingDirection">
+        <xs:annotation>
+            <xs:documentation>Whether the interest is
+                rounded up, down or to the
+                nearest round value.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "up"/>
+            <xs:enumeration value = "half up"/>
+            <xs:enumeration value = "down"/>
+            <xs:enumeration value = "half down"/>
+            <xs:enumeration value = "nearest"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
