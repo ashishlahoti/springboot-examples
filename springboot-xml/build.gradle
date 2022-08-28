@@ -44,6 +44,7 @@ configurations {
     jaxb
 }
 
+// Dependencies to be used by "jaxb" task
 dependencies {
     jaxb(
         'com.sun.xml.bind:jaxb-xjc:2.3.1',
@@ -53,6 +54,7 @@ dependencies {
     )
 }
 
+// JAXB task definition
 task jaxb {
     def generatedResouces = "src/main/generated-sources"
     def jaxbTargetDir = file(generatedResouces)
@@ -70,6 +72,8 @@ task jaxb {
     }
 }
 
+// Add generated classes directory to source
 sourceSets.main.java.srcDirs += 'src/main/generated-sources'
 
+// Run jaxb task before compile Java classes
 compileJava.dependsOn jaxb
