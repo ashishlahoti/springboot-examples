@@ -17,8 +17,6 @@ api:
     url-patterns: "/users/*,/posts/*"
     requestIdParamName: CORRELATION_ID
 
-
-
 springdoc:
   swagger-ui:
     enabled: true
@@ -26,6 +24,9 @@ springdoc:
 
 server:
   port: 8080
+  error:
+    whitelabel:
+      enabled: true
 
 logging:
   level:

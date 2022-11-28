@@ -134,5 +134,11 @@ person:
     Thanks & Regards,
     Ashish Kumar Lahoti
     email - lahoti.ashish20@gmail.com
+app:
+  config:
+    keyword1: value1
+    keyword2: value2
+    keyword3: value3
+
   
 

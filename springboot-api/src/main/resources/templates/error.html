@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Something went wrong!</title>
+</head>
+<body>
+  <h1>Generic Error - <span th:text="${status}">Status</span></h1>
+  <p>Sorry for the inconvenience. Please contact the administrator.</p>
+  <br/>
+  <ul>
+    <li>Timestamp: <span th:text="${timestamp}">Timestamp</span></li>
+    <li>Path: <span th:text="${path}">Path</span></li>
+    <li>Error: <span th:text="${error}">Error</span></li>
+  </ul>
+</body>
+</html>

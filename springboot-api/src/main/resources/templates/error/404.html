@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <title>404 - resource not found</title>
+</head>
+<body>
+<div class="container">
+  <h1><span class="label label-default">Resource Not Found Error - 404</span></h1>
+
+  <p>Requested resource was not found. Please contact the administrator.</p>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>Timestamp</td>
+      <td th:text="${timestamp}">Timestamp</td>
+    </tr>
+    <tr>
+      <td>Path</td>
+      <td th:text="${path}">Path</td>
+    </tr>
+    <tr>
+      <td>Status</td>
+      <td th:text="${status}">Status</td>
+    </tr>
+    <tr>
+      <td>Error</td>
+      <td th:text="${error}">Error</td>
+    </tr>
+    <tr>
+      <td>Message</td>
+      <td th:text="${message}">Message</td>
+    </tr>
+  </table>
+  </div>
+</body>
+</html>

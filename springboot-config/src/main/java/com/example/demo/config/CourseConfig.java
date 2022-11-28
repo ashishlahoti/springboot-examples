@@ -1,21 +1,19 @@
 package com.example.demo.config;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @Configuration
 @JsonIgnoreProperties({"$$beanFactory"})
@@ -83,6 +81,12 @@ public class CourseConfig {
 
     @Value("#{${unknownMap : {key1: '1', key2: '2'}}}")
     private Map<String, Integer> unknownMap;
+
+    @Bean
+    @ConfigurationProperties(prefix = "course.label")
+    public Map<String, String> getLabels() {
+        return new HashMap<>();
+    }
 
     @Value("#{${course.keyword_count}['unknownKey'] ?: 100}")
     private Integer unknownKeyWithDefaultValue;
