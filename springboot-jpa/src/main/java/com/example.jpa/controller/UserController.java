@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @PostMapping
-    public User createUser(UserRequestModel userRequestModel) {
+    public User createUser(@RequestBody UserRequestModel userRequestModel) {
         return userService.createUser(userRequestModel);
     }
 

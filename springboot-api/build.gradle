@@ -40,3 +40,12 @@ dependencyManagement {
 test {
     useJUnitPlatform()
 }
+
+tasks.named("bootJar") {
+    archiveClassifier = 'exec'
+    enabled = true
+}
+
+tasks.named("jar") {
+    archiveClassifier = ''
+}

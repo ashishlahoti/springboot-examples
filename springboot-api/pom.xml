@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>api</artifactId>
+	<artifactId>springboot-demo2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springboot-api</name>
 	<description>Build RESTFul APIs with Spring Boot</description>
@@ -20,17 +20,12 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
@@ -52,7 +47,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
+			<version>1.18.24</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mapstruct</groupId>
@@ -63,6 +58,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -83,6 +83,21 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+<!--					<execution>-->
+<!--						<id>build information</id>-->
+<!--						<goals>-->
+<!--							<goal>build-info</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+					<execution>
+						<id>repackage</id>
+						<configuration>
+<!--							<classifier>exec</classifier>-->
+							<skip>true</skip>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -94,10 +109,12 @@
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
+							<version>1.18.24</version>
 						</path>
 						<path>
 							<groupId>org.mapstruct</groupId>
 							<artifactId>mapstruct-processor</artifactId>
+							<version>1.5.3.Final</version>
 						</path>
 					</annotationProcessorPaths>
 					<compilerArgs>
@@ -105,7 +122,6 @@
 						<arg>-Amapstruct.defaultComponentModel=spring</arg>
 					</compilerArgs>
 				</configuration>
-
 			</plugin>
 		</plugins>
 	</build>

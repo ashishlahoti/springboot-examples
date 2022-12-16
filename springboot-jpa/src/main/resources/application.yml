@@ -16,17 +16,6 @@ info:
 #APP SPECIFIC CUSTOM PROPERTIES
 app:
   name: spring boot application
-  api:
-    title: Spring Boot APIs
-    version: 1.0.0
-    description: Spring Boot APIs description
-    base-package: com.abc.controller
-    contact-name: apisupportgroup
-    contact-email: apisupportgroup@abc.com
-    logging:
-      enable: true
-      url-patterns: /users/*,/posts/*
-      requestIdParamName: reqId
 server:
   port: 8080
 logging:
@@ -59,54 +48,9 @@ spring:
   h2.console.enabled: true
   jpa:
     generate-ddl: true
-    show-sql: true
-person:
-  name: Ashish Kumar Lahoti
-  occupation: blogger
-  age: 34
-  gpa: 3.5
-  fav_num: 1e+10
-  male: true
-  birthday: 1986-08-22
-  flaws: null
-  hobbies:
-    - bike riding
-    - watching movies
-    - online games
-    - cooking
-  movies: ["Dark Knight", "Spider Man", "Thor"]
-  assets: {Car: 1, Bike: 2, Home: 1}
-  size:
-    t-shirt:
-      us: XL
-      uk: L
-    shoes:
-      us: 8.5
-      uk: 6.5 
-  friends:
-    - name: "adam"
-      age: 28
-    - {name: "ben", age: 26}
-    -
-      name: "charlie"
-      age: 40
-  description: >
-    Lorem ipsum dolor sit amet,
-    consectetur adipiscing elit, sed
-    do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua
-  signature: |
-    Thanks & Regards,
-    Ashish Kumar Lahoti
-    email - lahoti.ashish20@gmail.com
-management.endpoints.web.exposure.include: info,health,release-notes
-course1:
-  title: "How to use Spring @Value annotation"
-  duration: 30
-  rating: 4.5
-  page_views: 1e+10
-  trending: true
-  created_date: 2020-05-26
-  tags: Spring, Spring Boot, Annotation
-  
-
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+logging.level.org.hibernate.SQL: DEBUG
+logging.level.org.hibernate.type.descriptor.sql: TRACE
