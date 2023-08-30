@@ -1,6 +1,6 @@
-package com.example.kafka.controller;
+package com.example.kafka.single.controller;
 
-import com.example.kafka.service.KafkaProducerService;
+import com.example.kafka.single.service.KafkaProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

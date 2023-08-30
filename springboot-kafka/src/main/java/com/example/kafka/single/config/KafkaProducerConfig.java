@@ -1,6 +1,6 @@
-package com.example.kafka.config;
+package com.example.kafka.single.config;
 
-import com.example.kafka.service.CryptoService;
+import com.example.kafka.single.service.CryptoService;
 import org.apache.kafka.common.config.SslConfigs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

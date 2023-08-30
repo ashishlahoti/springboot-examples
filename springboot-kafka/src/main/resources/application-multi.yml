@@ -1,0 +1,49 @@
+#APP SPECIFIC CUSTOM PROPERTIES
+app:
+  kafka:
+    producer:
+      topic: test
+    consumer:
+      topic: test
+
+#Kafka PROPERTIES
+kafka:
+  bootstrap-servers: localhost:9092
+  ssl:
+    protocol: SSL
+    trust-store-location: classpath:/app/store/truststore.jks
+    trust-store-password: password
+    key-store-location: classpath:/app/store/keystore.jks
+    key-store-password: password
+    key-password: password
+  producer:
+    producer1:
+      bootstrap-servers: server1:9092, server1:9093
+      topic: topic1
+      retries: 0
+      acks: all
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    producer2:
+      bootstrap-servers: server2:9092, server2:9093
+      topic: topic2
+      retries: 2
+      acks: 1
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  consumer:
+    consumer1:
+      group-id: consumer-1-group-1
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    consumer2:
+      group-id: consumer-2-group-1
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+#LOGGING PROPERTIES
+logging:
+  level:
+    root: INFO
