@@ -33,12 +33,14 @@ kafka:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
   consumer:
     consumer1:
-      group-id: consumer-1-group-1
+      topic: topic1
+      group-id: group1
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     consumer2:
-      group-id: consumer-2-group-1
+      topic: topic2
+      group-id: group2
       auto-offset-reset: latest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer

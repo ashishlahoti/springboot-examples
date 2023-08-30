@@ -24,7 +24,7 @@ public class KafkaMultipleConsumerConfig {
 
   @Bean
   @Qualifier("consumer1")
-  public ConcurrentKafkaListenerContainerFactory<String, String> consumer1KafkaListenerContainerFactory() {
+  public ConcurrentKafkaListenerContainerFactory<String, String> consumer1ContainerFactory() {
     ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
     factory.setConsumerFactory(consumerFactory("consumer1"));
     return factory;
@@ -32,7 +32,7 @@ public class KafkaMultipleConsumerConfig {
 
   @Bean
   @Qualifier("consumer2")
-  public ConcurrentKafkaListenerContainerFactory<String, String> consumer2KafkaListenerContainerFactory() {
+  public ConcurrentKafkaListenerContainerFactory<String, String> consumer2ContainerFactory() {
     ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
     factory.setConsumerFactory(consumerFactory("consumer2"));
     return factory;
