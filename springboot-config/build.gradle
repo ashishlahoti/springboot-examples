@@ -1,6 +1,6 @@
 plugins {
-    id 'org.springframework.boot' version '2.5.0'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot' version '2.7.16'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
     id 'java'
 }
 
@@ -13,7 +13,13 @@ repositories {
 }
 
 ext {
-    set('springCloudVersion', "2020.0.3")
+    set('springCloudVersion', "2021.0.8")
+}
+
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
 }
 
 dependencies {
@@ -22,6 +28,8 @@ dependencies {
     }
     //implementation 'org.springframework.boot:spring-boot-starter-jetty'
     //implementation 'org.springframework.boot:spring-boot-starter-undertow'
+
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springdoc:springdoc-openapi-ui:latest.release'
